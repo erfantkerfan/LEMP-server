@@ -25,24 +25,28 @@ nginx
 
 nginx config
 
-#server for redirecting from IP to DNS: ---->
+server for redirecting from IP to DNS: ---->
 
 `        server {
             listen 80;
             server_name 10.10.10.10;
 
             return 301 $scheme://hsshohada.com;
-        }`
+        }
+`
 
-#default server config
+default server config
 
 `
 server {
         client_max_body_size 100M;
         listen 80 default_server;
         listen [::]:80 default_server;
-        
-        #phpmyadmin server: ---->
+`
+
+phpmyadmin server: ---->
+
+`
         location /phpmyadmin {
                 root /var/www/laravel/;
                 index index.php index.html index.htm;
