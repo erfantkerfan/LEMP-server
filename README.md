@@ -35,7 +35,7 @@ nginx config
         }
 
 
-# Default server configuration
+#default server config
 server {
         client_max_body_size 100M;
         listen 80 default_server;
