@@ -24,9 +24,9 @@ nginx
 * `sudo nano /etc/nginx/sites-available/default`
 
 nginx config
-`
-#server for redirecting from IP to DNS: ---->
 
+#server for redirecting from IP to DNS: ---->
+`
         server {
             listen 80;
             server_name 10.10.10.10;
@@ -34,8 +34,11 @@ nginx config
             return 301 $scheme://hsshohada.com;
         }
 
+`
 
 #default server config
+
+`
 server {
         client_max_body_size 100M;
         listen 80 default_server;
@@ -71,7 +74,8 @@ server {
         location ~ /\.ht {
                deny all;
         }
-}`
+}
+`
 * `sudo nginx -t`
 * `sudo systemctl reload nginx`
 * `sudo mkdir -p /var/www/laravel`
