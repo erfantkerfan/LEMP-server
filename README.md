@@ -25,31 +25,13 @@ nginx
 
 nginx config
 ```
-##
-# You should look at the following URL's in order to grasp a solid understanding
-# of Nginx configuration files in order to fully unleash the power of Nginx.
-# http://wiki.nginx.org/Pitfalls
-# http://wiki.nginx.org/QuickStart
-# http://wiki.nginx.org/Configuration
-#
-# Generally, you will want to move this file somewhere, and start with a clean
-# file but keep this around for reference. Or just disable in sites-enabled.
-#
-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
-##
-
 #server for redirecting from IP to DNS: ---->
-
         server {
             listen 80;
-            server_name 145.239.165.140;
-
-            return 301 $scheme://hsshohada.com;
+            server_name 10.10.10.10;
+            return 302 $scheme://hsshohada.com;
         }
-
-
-# Default server configuration
-#
+# Default server configuration: ---->
 server {
         client_max_body_size 100M;
         listen 80 default_server;
