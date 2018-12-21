@@ -5,7 +5,9 @@
 * `sudo apt-get install mysql-server`
 * `sudo mysql_secure_installation`
 * `sudo add-apt-repository universe`
-* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap`
+* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap`.
+* `sudo apt-get install phpmyadmin`
+* `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
 
 php fpm config
 
@@ -118,25 +120,16 @@ server {
 * `sudo mkdir site.git && cd site.git`
 * `sudo git init --bare`
 * `sudo nano /var/repo/site.git/hooks/post-receive`
-
+```
 ------->#!/bin/sh
-
 ------->git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
-
+```
 * `sudo chmod +x post-receive`
+
+after git push to server with: `git remote add production ssh://root@10.10.10.10/var/repo/site.git`
+
 * `composer install --no-dev`
-* `sudo apt-get install phpmyadmin`
 * `sudo chown -R :www-data /var/www/laravel`
 * `sudo chmod -R 775 /var/www/laravel/storage`
 * `sudo chmod -R 775 /var/www/laravel/bootstrap/cache`
-* `mysql>`
-* `CREATE DATABASE blog;`
-* `SHOW DATABASES;`
-* `exit`
-* `sudo mysql -u root`
-* `CREATE USER 'erfan'@'localhost' IDENTIFIED BY 'password';`
-* GRANT ALL PRIVILEGES ON *.* TO 'erfan'@'localhost';`
-* `FLUSH PRIVILEGES;`
-* `exit`
-* `sudo service mysql restart`
 * `cp .env.example .env`
