@@ -26,15 +26,13 @@ nginx
 nginx config
 
 #server for redirecting from IP to DNS: ---->
-`
-        server {
+
+`        server {
             listen 80;
             server_name 10.10.10.10;
 
             return 301 $scheme://hsshohada.com;
-        }
-
-`
+        }`
 
 #default server config
 
