@@ -5,7 +5,7 @@
 * `sudo apt-get install mysql-server`
 * `sudo mysql_secure_installation`
 * `sudo add-apt-repository universe`
-* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap`.
+* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap`
 * `sudo apt-get install phpmyadmin`
 * `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
 
