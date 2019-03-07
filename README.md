@@ -126,24 +126,24 @@ server {
 ```(paste lines below:)
 #!/bin/sh
 
-echo "*******Post receive hook: Updating website*******"
+echo "*******\nPost receive hook: Updating website\n*******"
 git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
 
 cd /var/www/laravel
 
-echo "*******migrating*******"
+echo "*******\nmigrating\n*******"
 php artisan migrate --no-interaction --force
 
-echo "*******handling cache*******"
+echo "*******\nhandling cache\n*******"
 php artisan cache:clear
 php artisan config:cache
 php artisan view:cache
 php artisan route:cache
 
-echo "*******composer install*******"
+echo "*******\ncomposer install\n*******"
 composer install  >> /dev/null 2>&1
 
-echo "*******ALL HAIL ERFAN*******"
+echo "*******\nALL HAIL ERFAN\n*******"
 ```
 * `sudo chmod +x post-receive`
 
