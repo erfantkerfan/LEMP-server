@@ -134,7 +134,7 @@ cd /var/www/laravel
 echo "*******migrating*******"
 php artisan migrate --no-interaction
 
-echo "*******handeling cache*******"
+echo "*******handling cache*******"
 php artisan cache:clear
 php artisan config:cache
 php artisan view:cache
