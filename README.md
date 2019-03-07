@@ -123,9 +123,27 @@ server {
 * `sudo mkdir site.git && cd site.git`
 * `sudo git init --bare`
 * `sudo nano /var/repo/site.git/hooks/post-receive`
-```
-------->#!/bin/sh
-------->git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
+```(paste lines below:)
+#!/bin/sh
+
+echo "*******Post receive hook: Updating website*******"
+git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
+
+cd /var/www/laravel
+
+echo "*******migrating*******"
+php artisan migrate --no-interaction
+
+echo "*******handeling cache*******"
+php artisan cache:clear
+php artisan config:cache
+php artisan view:cache
+php artisan route:cache
+
+echo "*******composer install*******"
+composer install
+
+echo "*******ALL HAIL ERFAN*******"
 ```
 * `sudo chmod +x post-receive`
 
