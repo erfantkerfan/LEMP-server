@@ -132,7 +132,7 @@ git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
 cd /var/www/laravel
 
 echo "*******migrating*******"
-php artisan migrate --no-interaction
+php artisan migrate --no-interaction --force
 
 echo "*******handling cache*******"
 php artisan cache:clear
@@ -141,7 +141,7 @@ php artisan view:cache
 php artisan route:cache
 
 echo "*******composer install*******"
-composer install
+composer install  >> /dev/null 2>&1
 
 echo "*******ALL HAIL ERFAN*******"
 ```
