@@ -26,7 +26,7 @@ php fpm config
 
 nginx
 
-* `sudo nano /etc/nginx/sites-available/default  -------->  client_max_body_size 2M;`
+* `sudo nano /etc/nginx/sites-available/default`
 
 nginx config
 ```
