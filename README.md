@@ -21,6 +21,7 @@ php fpm config
 * `sudo nano /etc/php/7.2/fpm/php.ini  -------->  max_execution_time = 300`
 * `sudo nano /etc/php/7.2/fpm/php.ini  -------->  max_input_time = 300`
 * `sudo nano /etc/php/7.2/fpm/php.ini  -------->  max_file_uploads = 100`
+
 `sudo systemctl restart php7.2-fpm`
 
 nginx
