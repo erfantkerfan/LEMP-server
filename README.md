@@ -126,6 +126,9 @@ git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
 
 cd /var/www/laravel
 
+echo "*******\ncomposer install\n*******"
+composer install  >> /dev/null 2>&1
+
 echo "*******\nmigrating\n*******"
 php artisan migrate --no-interaction --force
 
@@ -135,9 +138,6 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:clear
 php artisan view:cache
-
-echo "*******\ncomposer install\n*******"
-composer install  >> /dev/null 2>&1
 
 echo "*******\nALL HAIL ERFAN\n*******"
 ```
