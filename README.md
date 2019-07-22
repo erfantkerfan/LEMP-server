@@ -150,4 +150,5 @@ after git push to server with: `git remote add production ssh://root@10.10.10.10
 * `sudo chown -R :www-data /var/www/laravel`
 * `sudo chmod -R 775 /var/www/laravel/storage`
 * `sudo chmod -R 775 /var/www/laravel/bootstrap/cache`
+* `sudo chmod -R 777 /var/www/laravel/temp`
 * `cp .env.example .env`
