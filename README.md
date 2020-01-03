@@ -16,15 +16,15 @@
 
 php fpm config
 
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  cgi.fix_pathinfo=0`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  memory_limit = 32M`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  upload_max_filesize = 2M`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  post_max_size = 3M`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  max_execution_time = 300`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  max_input_time = 300`
-* `sudo nano /etc/php/7.3/fpm/php.ini  -------->  max_file_uploads = 100`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  cgi.fix_pathinfo=0`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  memory_limit = 32M`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  upload_max_filesize = 2M`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  post_max_size = 3M`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  max_execution_time = 300`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  max_input_time = 300`
+* `sudo nano /etc/php/7.4/fpm/php.ini  -------->  max_file_uploads = 100`
 
-`sudo systemctl restart php7.3-fpm`
+`sudo systemctl restart php7.4-fpm`
 
 nginx
 
@@ -59,7 +59,7 @@ server {
                 index index.php index.html index.htm;
                 location ~ ^/phpmyadmin/(.+\.php)$ {
                         try_files $uri =404;
-                        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+                        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
                         include fastcgi_params;
                         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                 }
@@ -80,7 +80,7 @@ server {
         #       # With php7.0-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
         #       # With php7.0-fpm:
-                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         }
         # deny access to .htaccess files, if Apache's document root
         # concurs with nginx's one
