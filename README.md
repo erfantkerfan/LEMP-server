@@ -11,8 +11,6 @@
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl`
 * `sudo apt-get install phpmyadmin`
 * `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
-* `sudo apt-get install composer`
-* `composer global require hirak/prestissimo`
 
 php fpm config
 
@@ -124,6 +122,7 @@ server {
 * `cd ~`
 * `curl -sS https://getcomposer.org/installer | php`
 * `sudo mv composer.phar /usr/local/bin/composer`
+* `composer global require hirak/prestissimo`
 * `cd /var`
 * `sudo mkdir repo && cd repo`
 * `sudo mkdir site.git && cd site.git`
