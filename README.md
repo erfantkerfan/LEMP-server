@@ -26,6 +26,15 @@ php fpm config
 
 `sudo systemctl restart php7.4-fpm`
 
+certbot
+
+* `sudo add-apt-repository ppa:certbot/certbot`
+* `sudo apt-get update`
+* `sudo apt-get install certbot python-certbot-nginx`
+* `sudo certbot certonly --nginx`
+* `sudo certbot renew --dry-run`
+
+
 nginx
 
 * `sudo nano /etc/nginx/sites-available/default`
