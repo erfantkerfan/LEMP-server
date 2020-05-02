@@ -5,9 +5,9 @@
 * `sudo apt-get install mysql-server`
 * `sudo mysql_secure_installation`
 * `sudo add-apt-repository universe`
-* `apt-get install software-properties-common`
-* `add-apt-repository ppa:ondrej/php`
-* `apt-get update`
+* `sudo apt-get install software-properties-common`
+* `sudo add-apt-repository ppa:ondrej/php`
+* `sudo apt-get update`
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl`
 * `sudo apt-get install phpmyadmin`
 * `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
