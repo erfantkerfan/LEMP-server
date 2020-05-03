@@ -182,7 +182,12 @@ git push to server on your local code-base with:
 * `git remote add production ssh://USER@YOUR-IP/var/repo/YOUR-DOMAIN.git`
 * `git push production master`
 
-Prepare the server:
+You get bunch of errors let fix it:
+* `mysql -u root`
+```
+
+```
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 * `cp .env.example .env`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
