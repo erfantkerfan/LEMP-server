@@ -104,7 +104,8 @@ server {
         location ~ /\.ht {
                 deny all;
         }
-
+        #error_log   /dev/null   crit; # if you are confident
+        #access_log off; # if you are confident
 }
 server {
         listen 80;
@@ -114,12 +115,13 @@ server {
         location / {
                 return 301 https://$host$request_uri;
         }
-
 }
 # server for redirecting from IP to DNS: ---->
 server {
         listen 80;
         listen 443
+        error_log   /dev/null   crit;
+        access_log off;
         server_name YOUR-IP;
         return 301 https://YOUR-DOMAIN.COM/$request_uri;
 }
