@@ -9,7 +9,10 @@
 * `sudo add-apt-repository ppa:ondrej/php`
 * `sudo apt-get update`
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl`
-* `sudo apt-get install phpmyadmin`
+* `cd /tmp && wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.tar.gz`
+* `tar xvzf phpMyAdmin-5.0.2-english.tar.gz`
+* `mv phpMyAdmin-5.0.2-english /usr/share/phpmyadmin`
+* `sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
 * `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
 
 php fpm config
