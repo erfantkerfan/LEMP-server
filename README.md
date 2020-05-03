@@ -176,6 +176,7 @@ Prepare the server:
 
 git push to server on your local code-base with:
 
+* `git init`
 * `git remote add production ssh://USER@YOUR-IP/var/repo/YOUR-DOMAIN.git`
 * `git push production master`
 
