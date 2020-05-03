@@ -188,7 +188,8 @@ You get bunch of errors let fix it:
 
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-* `cp .env.example .env`
+* `cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
 * `sudo chmod -R 777 /var/www/YOUR-DOMAIN/temp`
+* `sudo nano .env`
