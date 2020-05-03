@@ -25,29 +25,37 @@ php fpm config
 * `sudo nano /etc/php/7.4/fpm/php.ini  -------->  max_input_time = 300`
 * `sudo nano /etc/php/7.4/fpm/php.ini  -------->  max_file_uploads = 100`
 
-`sudo systemctl restart php7.4-fpm`
+* `sudo systemctl restart php7.4-fpm`
 
 certbot
 
 * `sudo add-apt-repository ppa:certbot/certbot`
 * `sudo apt-get update`
-* `sudo apt-get install certbot python-certbot-nginx`
+* `sudo apt-get install certbot python3-certbot-nginx`
+
+set-up YOUR-DOMAIN.COM
+* `cp /etc/nginx/sites-available/default /etc/nginx/sites-available/YOUR-DOMAIN`
+* `ln -s /etc/nginx/sites-available/YOUR-DOMAIN /etc/nginx/sites-enabled/`
+* `rm /etc/nginx/sites-enabled/default`
+* `sudo nano /etc/nginx/sites-available/YOUR-DOMAIN  -------->  server_name _`
+* `sudo systemctl relaod nginx`
+
+certbot
+
 * `sudo certbot certonly --nginx`
 * `sudo certbot renew --dry-run`
 
-
 nginx
 
-* `sudo nano /etc/nginx/sites-available/default`
+* `sudo nano /etc/nginx/sites-available/YOUR-DOMAIN`
 
 nginx config
 ```
-# In the name of Allah
 server {
-        listen [::]:443 ssl ipv6only=on;
         listen 443 ssl http2;
-        ssl_certificate /etc/letsencrypt/live/hsshohada.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/hsshohada.com/privkey.pem;
+        server_name YOUR-DOMAIN.COM;
+        ssl_certificate /etc/letsencrypt/live/YOUR-DOMAIN.COM/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/YOUR-DOMAIN.COM/privkey.pem;
         include /etc/letsencrypt/options-ssl-nginx.conf;
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
@@ -57,15 +65,15 @@ server {
         add_header X-XSS-Protection "1; mode=block";
         ssl_stapling on;
         ssl_stapling_verify on;
-        ssl_trusted_certificate /etc/letsencrypt/live/hsshohada.com/fullchain.pem;
+        ssl_trusted_certificate /etc/letsencrypt/live/YOUR-DOMAIN.COM/fullchain.pem;
         resolver 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 valid=3600s;
         resolver_timeout 5s;
 
-        client_max_body_size 100M;
+        client_max_body_size 50M;
 
-        #phpmyadmin server: ---->
+        # phpmyadmin server: ---->
         location /phpmyadmin {
-                root /var/www/laravel/;
+                root /var/www/;
                 index index.php index.html index.htm;
                 location ~ ^/phpmyadmin/(.+\.php)$ {
                         try_files $uri =404;
@@ -77,10 +85,9 @@ server {
                         root /var/www/laravel/;
                 }
         }
-        #laravel server:---->
-        root /var/www/laravel/public;
+        # laravel server:---->
+        root /var/www/YOUR-DOMAIN/public;
         index index.php index.html index.htm;
-        server_name hsshohada.com;
         location / {
         try_files $uri $uri/ /index.php?$query_string;
         }
@@ -101,7 +108,7 @@ server {
 }
 server {
         listen 80;
-        server_name hsshohada.com;
+        server_name YOUR-DOMAIN.COM;
         error_log   /dev/null   crit;
         access_log off;
         location / {
@@ -109,58 +116,71 @@ server {
         }
 
 }
-#server for redirecting from IP to DNS: ---->
+# server for redirecting from IP to DNS: ---->
 server {
         listen 80;
-        server_name 145.239.165.142;
-        return 301 $scheme://hsshohada.com;
+        listen 443
+        server_name YOUR-IP;
+        return 301 https://YOUR-DOMAIN.COM/$request_uri;
 }
 ```
 * `sudo nginx -t`
 * `sudo systemctl reload nginx`
-* `sudo mkdir -p /var/www/laravel`
+
+make a swapfil
+
 * `sudo fallocate -l 1G /swapfile`
 * `sudo mkswap /swapfile`
 * `sudo swapon /swapfile`
-* `cd ~`
-* `curl -sS https://getcomposer.org/installer | php`
+
+isntall Composer
+
+* `cd ~ && curl -sS https://getcomposer.org/installer | php`
 * `sudo mv composer.phar /usr/local/bin/composer`
 * `composer global require hirak/prestissimo`
-* `cd /var`
-* `sudo mkdir repo && cd repo`
-* `sudo mkdir site.git && cd site.git`
+
+prepare git server git-hook
+
+* `cd /var && sudo mkdir repo && cd repo`
+* `sudo mkdir YOUR-DOMAIN.git && cd YOUR-DOMAIN.git`
 * `sudo git init --bare`
-* `sudo nano /var/repo/site.git/hooks/post-receive`
+* `sudo nano hooks/post-receive`
 ```(paste lines below:)
 #!/bin/sh
 
-echo "*******\nPost receive hook: Updating website\n*******"
-git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
+echo "*******\n Post receive hook activate: Updating website \n*******"
+git --work-tree=/var/www/YOUR-DOMAIN --git-dir=/var/repo/YOUR-DOMAIN.git checkout -f
 
-cd /var/www/laravel
+cd /var/www/YOUR-DOMAIN
 
-echo "*******\ncomposer install\n*******"
-composer install  >> /dev/null 2>&1
+echo "*******\n composer install \n*******"
+composer install --no-dev >> /dev/null 2>&1
 
-echo "*******\nmigrating\n*******"
+echo "*******\n migrating \n*******"
 php artisan migrate --no-interaction --force
 
-echo "*******\nhandling cache\n*******"
+echo "*******\n handling cache \n*******"
 php artisan cache:clear
 php artisan config:cache
 php artisan route:cache
 php artisan view:clear
 php artisan view:cache
 
-echo "*******\nALL HAIL ERFAN\n*******"
+echo "*******\n All Done! \n*******"
 ```
-* `sudo chmod +x post-receive`
+* `sudo chmod +x hooks/post-receive`
 
-after git push to server with: `git remote add production ssh://root@10.10.10.10/var/repo/site.git`
+Prepare the server:
 
-* `composer install --no-dev`
-* `sudo chown -R :www-data /var/www/laravel`
-* `sudo chmod -R 775 /var/www/laravel/storage`
-* `sudo chmod -R 775 /var/www/laravel/bootstrap/cache`
-* `sudo chmod -R 777 /var/www/laravel/temp`
+* `cd ~ && sudo mkdir -p /var/www/YOUR-DOMAIN && sudo chown -R :www-data /var/www/YOUR-DOMAIN`
+
+git push to server on your local code-base with:
+
+* `git remote add production ssh://USER@YOUR-IP/var/repo/YOUR-DOMAIN.git`
+* `git push production master`
+
+Prepare the server:
 * `cp .env.example .env`
+* `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
+* `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
+* `sudo chmod -R 777 /var/www/YOUR-DOMAIN/temp`
