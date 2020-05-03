@@ -13,7 +13,7 @@
 * `tar xvzf phpMyAdmin-5.0.2-english.tar.gz`
 * `mv phpMyAdmin-5.0.2-english /usr/share/phpmyadmin`
 * `sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
-* `sudo ln -s /usr/share/phpmyadmin/ /var/www/laravel/`
+* `sudo ln -s /usr/share/phpmyadmin/ /var/www/`
 
 php fpm config
 
