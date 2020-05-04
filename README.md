@@ -185,10 +185,13 @@ git push to server on your local code-base with:
 You get bunch of errors let fix it:
 * `mysql -u root`
 ```
-
+CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWORD';
+GRANT ALL ON *.* TO 'USER'@'localhost';
+FLUSH PRIVILEGES;
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 * `cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
+* `sudo chown -R /var/www/YOUR-DOMAIN/`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
 * `sudo chmod -R 777 /var/www/YOUR-DOMAIN/temp`
