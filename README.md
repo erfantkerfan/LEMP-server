@@ -38,7 +38,7 @@ set-up YOUR-DOMAIN.COM
 * `sudo ln -s /etc/nginx/sites-available/YOUR-DOMAIN /etc/nginx/sites-enabled/`
 * `sudo rm /etc/nginx/sites-enabled/default`
 * `sudo nano /etc/nginx/sites-available/YOUR-DOMAIN  -------->  server_name _`
-* `sudo systemctl relaod nginx`
+* `sudo systemctl reload nginx`
 
 certbot
 
