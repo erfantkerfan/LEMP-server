@@ -34,9 +34,9 @@ certbot
 * `sudo apt-get install certbot python3-certbot-nginx`
 
 set-up YOUR-DOMAIN.COM
-* `cp /etc/nginx/sites-available/default /etc/nginx/sites-available/YOUR-DOMAIN`
-* `ln -s /etc/nginx/sites-available/YOUR-DOMAIN /etc/nginx/sites-enabled/`
-* `rm /etc/nginx/sites-enabled/default`
+* `sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/YOUR-DOMAIN`
+* `sudo ln -s /etc/nginx/sites-available/YOUR-DOMAIN /etc/nginx/sites-enabled/`
+* `sudo rm /etc/nginx/sites-enabled/default`
 * `sudo nano /etc/nginx/sites-available/YOUR-DOMAIN  -------->  server_name _`
 * `sudo systemctl relaod nginx`
 
