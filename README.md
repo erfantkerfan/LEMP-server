@@ -9,10 +9,10 @@
 * `sudo add-apt-repository ppa:ondrej/php`
 * `sudo apt-get update`
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl php-imagick`
-* `cd /tmp && wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.tar.gz`
-* `tar xvzf phpMyAdmin-5.0.2-english.tar.gz`
-* `mv phpMyAdmin-5.0.2-english /usr/share/phpmyadmin`
-* `sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
+* `sudo cd /tmp && sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.tar.gz`
+* `sudo tar xvzf phpMyAdmin-5.0.2-english.tar.gz`
+* `sudo mv phpMyAdmin-5.0.2-english /usr/share/phpmyadmin`
+* `sudo sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
 * `sudo mkdir -p /var/www/ && sudo ln -s /usr/share/phpmyadmin/ /var/www/`
 
 php fpm config
@@ -190,7 +190,7 @@ GRANT ALL ON *.* TO 'USER'@'localhost';
 FLUSH PRIVILEGES;
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-* `cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
+* `sudo cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
 * `sudo chown -R /var/www/YOUR-DOMAIN/`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
