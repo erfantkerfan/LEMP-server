@@ -191,7 +191,7 @@ FLUSH PRIVILEGES;
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 * `sudo cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
-* `sudo chown -R /var/www/YOUR-DOMAIN/`
+* `sudo chown -R :www-data /var/www/YOUR-DOMAIN/`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
 * `sudo chmod -R 777 /var/www/YOUR-DOMAIN/temp`
