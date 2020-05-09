@@ -119,7 +119,7 @@ server {
 # server for redirecting from IP to DNS: ---->
 server {
         listen 80;
-        listen 443
+        listen 443;
         error_log   /dev/null   crit;
         access_log off;
         server_name YOUR-IP;
@@ -190,7 +190,7 @@ GRANT ALL ON *.* TO 'USER'@'localhost';
 FLUSH PRIVILEGES;
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-* `sudo cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
+* `cd /var/www/YOUR-DOMAIN && sudo cp .env.example .env`
 * `sudo chown -R :www-data /var/www/YOUR-DOMAIN/`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/storage`
 * `sudo chmod -R 775 /var/www/YOUR-DOMAIN/bootstrap/cache`
