@@ -186,7 +186,8 @@ You get bunch of errors let fix it:
 * `mysql -u root`
 ```
 CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWORD';
-GRANT ALL ON *.* TO 'USER'@'localhost';
+CREATE DATABASE YOUR-DOMAIN CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON YOUR-DOMAIN.* TO 'USER'@'localhost';
 FLUSH PRIVILEGES;
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
