@@ -1,4 +1,4 @@
-# LEMP-server
+# LEMP-server (last test on ununtu server 20)
 * `sudo apt-get update`
 * `sudo apt-get upgrade`
 * `sudo apt-get install nginx`
@@ -33,9 +33,9 @@ php fpm config
 
 certbot
 
-* `sudo add-apt-repository ppa:certbot/certbot`
-* `sudo apt-get update`
-* `sudo apt-get install certbot python3-certbot-nginx`
+* `sudo snap install core; sudo snap refresh core`
+* `sudo snap install --classic certbot`
+* `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
 
 set-up YOUR-DOMAIN.COM
 * `sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/YOUR-DOMAIN`
