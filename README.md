@@ -143,7 +143,6 @@ isntall Composer
 
 * `cd ~ && curl -sS https://getcomposer.org/installer | php`
 * `sudo mv composer.phar /usr/local/bin/composer`
-* `composer global require hirak/prestissimo`
 
 prepare git server git-hook
 
