@@ -11,7 +11,7 @@
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl php-imagick`
 * `cd /tmp && sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz`
 * `sudo tar xvzf phpMyAdmin-5.0.4-english.tar.gz`
-* `sudo mv phpMyAdmin-5.0.2-english /usr/share/phpmyadmin`
+* `sudo mv phpMyAdmin-5.0.4-english /usr/share/phpmyadmin`
 * `sudo sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
 * `mkdir /usr/share/phpmyadmin/tmp`
 * `chmod 777 /usr/share/phpmyadmin/tmp`
