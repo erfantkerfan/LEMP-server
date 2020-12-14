@@ -15,8 +15,8 @@
 
 run this command as root meannign `su` run this single command and then `exit`:
 * `sudo sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
-* `mkdir /usr/share/phpmyadmin/tmp`
-* `chmod 777 /usr/share/phpmyadmin/tmp`
+* `sudo mkdir /usr/share/phpmyadmin/tmp`
+* `sudo chmod 777 /usr/share/phpmyadmin/tmp`
 * `sudo mkdir -p /var/www/ && sudo ln -s /usr/share/phpmyadmin/ /var/www/`
 
 php fpm config
