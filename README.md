@@ -4,6 +4,13 @@
 * `sudo apt-get install nginx`
 * `sudo apt-get install mysql-server`
 * `sudo mysql_secure_installation`
+* `vim /etc/mysql/mysql.conf.d/mysql.cnf`
+```
+[mysql]
+query_cache_type=1
+query_cache_size = 10M
+query_cache_limit=256K
+```
 * `sudo add-apt-repository universe`
 * `sudo apt-get install software-properties-common`
 * `sudo add-apt-repository ppa:ondrej/php`
