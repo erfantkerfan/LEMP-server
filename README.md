@@ -159,7 +159,7 @@ git --work-tree=/var/www/YOUR-DOMAIN --git-dir=/var/repo/YOUR-DOMAIN.git checkou
 cd /var/www/YOUR-DOMAIN
 
 echo "*******\n composer install \n*******"
-composer install --no-dev >> /dev/null 2>&1
+composer install --optimize-autoloader --no-dev >> /dev/null 2>&1
 
 echo "*******\n migrating \n*******"
 php artisan migrate --no-interaction --force
