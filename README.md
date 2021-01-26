@@ -65,7 +65,7 @@ server {
 
         # SSL Pre-Config
         add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-Content-Type-Options nosniff;
+        add_header X-Content-Type-Options "nosniff";
         add_header X-XSS-Protection "1; mode=block";
         ssl_stapling on;
         ssl_stapling_verify on;
