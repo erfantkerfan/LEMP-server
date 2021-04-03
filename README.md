@@ -130,6 +130,7 @@ server {
         return 301 https://YOUR-DOMAIN.COM/$request_uri;
 }
 ```
+* you can also add `server_tokens off;` in http block
 * `sudo nginx -t`
 * `sudo systemctl reload nginx`
 
