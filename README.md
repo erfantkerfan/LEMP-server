@@ -8,7 +8,7 @@
 * `sudo apt-get install software-properties-common`
 * `sudo add-apt-repository ppa:ondrej/php`
 * `sudo apt-get update`
-* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-soap php-gd php-curl php-imagick`
+* `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-zip php-soap php-gd php-curl php-imagick`
 * `cd /tmp && sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz`
 * `sudo tar xvzf phpMyAdmin-5.0.4-english.tar.gz`
 * `sudo mv phpMyAdmin-5.0.4-english /usr/share/phpmyadmin`
