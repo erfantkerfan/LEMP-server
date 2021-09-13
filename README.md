@@ -9,9 +9,9 @@
 * `sudo add-apt-repository ppa:ondrej/php`
 * `sudo apt-get update`
 * `sudo apt-get install php-fpm php-mysql php-mbstring php-xml php-zip php-soap php-gd php-curl php-imagick`
-* `cd /tmp && sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz`
-* `sudo tar xvzf phpMyAdmin-5.0.4-english.tar.gz`
-* `sudo mv phpMyAdmin-5.0.4-english /usr/share/phpmyadmin`
+* `cd /tmp && sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.1.1/phpMyAdmin-5.1.1-english.tar.gz`
+* `sudo tar xvzf phpMyAdmin-5.1.1-english.tar.gz`
+* `sudo mv phpMyAdmin-5.1.1-english /usr/share/phpmyadmin`
 
 run this command as root meannign `su` run this single command and then `exit`:
 * `sudo sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$(openssl rand -base64 32)'|" /usr/share/phpmyadmin/config.sample.inc.php > /usr/share/phpmyadmin/config.inc.php`
